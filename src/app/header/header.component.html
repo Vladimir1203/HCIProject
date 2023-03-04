@@ -1,0 +1,25 @@
+<header>
+  <nav class = "navbar navbar-expand-md navbar-dark bg-dark">
+    <div><a href = "localhost:4200" class = "navbar-brand">HCIPozoristance</a></div>
+
+    <ul class = "navbar-nav">
+      <ng-template>
+        <li routerLinkActive="active"><a routerLink = "/home" class = "nav-link">Home</a></li>
+        <li routerLinkActive="active"><a routerLink = "/templates" class = "nav-link">Templates</a></li>
+        <li routerLinkActive="active"><a routerLink = "/createTemplate" class = "nav-link">Create template</a></li>
+        <li routerLinkActive="active"><a routerLink = "/paypal" class = "nav-link">Paypal</a></li>
+
+      </ng-template>
+    </ul>
+
+    <ul class = "navbar-nav navbar-collapse justify-content-end">
+      <ng-template>
+        <li><a routerLink = "/login" class = "nav-link">Login</a></li>
+      </ng-template>
+      <ng-template>
+        <li><a (click) = "onLogout()" routerLink = "/logout" class = "nav-link" >Logout</a></li>
+      </ng-template>
+    </ul>
+  </nav>
+</header>
+<br><br>
