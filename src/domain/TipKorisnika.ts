@@ -1,0 +1,3 @@
+enum TipKorisnika{
+  kupac, zaposleni
+}

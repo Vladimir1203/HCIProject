@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Slika</th>
+      <th scope="col">Opis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let predstava of predstave; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        <img
+          [src]="predstava.slika"
+          class="me-2"
+          style="width: 100px"
+        />
+        {{ predstava.naziv }}
+      </td>
+<!--      <td>{{predstava.naziv}}</td>-->
+      <td>{{predstava.opis}}</td>
+    </tr>
+  </tbody>
+</table>
