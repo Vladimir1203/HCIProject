@@ -6,6 +6,9 @@ import { TableComponent } from './table/table.component';
 import { AppRoutingModule } from "./app.routing.module";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { DetailViewComponent } from "./detail-view/detail-view.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -13,11 +16,14 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     TableComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DetailViewComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
