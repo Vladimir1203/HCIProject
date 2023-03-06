@@ -19,7 +19,7 @@
       </td>
 <!--      <td>{{predstava.naziv}}</td>-->
       <td>{{predstava.opis}}</td>
-      <button class = ".button:hover" (click)="onClick()">Click me</button>
+      <button class = ".button:hover" (click)="onClick($event)">ClickMe {{i + 1}}</button>
     </tr>
   </tbody>
 </table>

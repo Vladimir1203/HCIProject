@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-detail-view',
@@ -7,13 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./detail-view.component.css']
 })
 export class DetailViewComponent {
-  constructor() {}
-  openDialog() {
-
-    // const dialogRef = this.dialog.open(DetailViewComponent);
-    //
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
+  brojSlobodnihMesta : number = 50;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {brojMesta: number}) {
+    this.brojSlobodnihMesta = data.brojMesta;
   }
 }
