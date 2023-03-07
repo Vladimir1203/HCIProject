@@ -2,3 +2,11 @@
   background-color: #4CAF50; /* Green */
   color: white;
 }
+
+.custom-color{
+  color: white;
+}
+
+.custom-position{
+  float: right;
+}

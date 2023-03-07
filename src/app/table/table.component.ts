@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Predstava} from "../../domain/Predstava";
 import {DetailViewComponent} from "../detail-view/detail-view.component";
 import {MatDialog} from "@angular/material/dialog";
+import {NewShowComponent} from "../new-show/new-show.component";
 
 @Component({
   selector: 'app-table',
@@ -42,5 +43,13 @@ export class TableComponent {
 
   sortByNameDesc() {
     this.predstave.sort((a, b) => b.naziv.localeCompare(a.naziv));
+  }
+
+  onAddNewShow($event: MouseEvent) {
+    const dialogRef = this.dialog.open(NewShowComponent, {data: { predstava : this.predstave[0]}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
