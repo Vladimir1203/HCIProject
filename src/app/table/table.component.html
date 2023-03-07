@@ -2,7 +2,10 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Slika</th>
+      <th scope="col">Slika
+        <button (click)="sortByNameAsc()">Sort by Name (A-Z)</button>
+        <button (click)="sortByNameDesc()">Sort by Name (Z-A)</button>
+      </th>
       <th scope="col">Opis</th>
     </tr>
   </thead>
@@ -19,7 +22,7 @@
       </td>
 <!--      <td>{{predstava.naziv}}</td>-->
       <td>{{predstava.opis}}</td>
-      <button class = ".button:hover" (click)="onClick($event)">ClickMe {{i + 1}}</button>
+      <button class = ".button:hover" (click)="onClick($event)">Detalji predstave {{i + 1}}</button>
     </tr>
   </tbody>
 </table>

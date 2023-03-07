@@ -25,14 +25,22 @@ export class TableComponent {
   onClick(event : any){
     console.log(event.target.textContent)
     let string = event.target.textContent;
-    let number : number = string.split(" ")[1]
+    let number : number = string.split(" ")[2]
     console.log(number)
 
     // this.detailViewComponent.openDialog()
-    const dialogRef = this.dialog.open(DetailViewComponent, {data: { brojMesta : this.predstave[number-1].brojPreostalihMesta}});
+    const dialogRef = this.dialog.open(DetailViewComponent, {data: { predstava : this.predstave[number-1]}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  sortByNameAsc() {
+    this.predstave.sort((a, b) => a.naziv.localeCompare(b.naziv));
+  }
+
+  sortByNameDesc() {
+    this.predstave.sort((a, b) => b.naziv.localeCompare(a.naziv));
   }
 }

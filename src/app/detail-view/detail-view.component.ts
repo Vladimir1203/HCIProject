@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+import {Predstava} from "../../domain/Predstava";
 
 @Component({
   selector: 'app-detail-view',
@@ -7,8 +8,16 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
   styleUrls: ['./detail-view.component.css']
 })
 export class DetailViewComponent {
-  brojSlobodnihMesta : number = 50;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {brojMesta: number}) {
-    this.brojSlobodnihMesta = data.brojMesta;
+  predstava : Predstava = new Predstava("", "", "", -1);
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {predstava: Predstava}) {
+    this.predstava = data.predstava;
+  }
+
+  onClick(predstava: Predstava) {
+    predstava.brojPreostalihMesta--;
+    if(predstava.brojPreostalihMesta == 0){
+
+    }
   }
 }

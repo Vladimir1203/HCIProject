@@ -1,10 +1,19 @@
-<h2 mat-dialog-title>Install Angular</h2>
+<h2 mat-dialog-title>Detalji predstave: {{predstava.naziv}}</h2>
 <mat-dialog-content class="mat-typography">
-  {{brojSlobodnihMesta}} br mesta
+  <p>
+    {{predstava.naziv}} -> naziv predstave
+  </p>
+  <p>
+    {{predstava.opis}} -> opis predstave
+  </p>
+  <p>
+    {{predstava.brojPreostalihMesta}} -> br preostalih mesta
+  </p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
+
+  <button mat-button cdkFocusInitial (click)="onClick(predstava)" [disabled]="predstava.brojPreostalihMesta === 0">Rezervisi kartu</button>
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
 </mat-dialog-actions>
 
 
