@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Predstava} from "../../domain/Predstava";
 
 @Component({
@@ -8,9 +8,17 @@ import {Predstava} from "../../domain/Predstava";
   styleUrls: ['./delete-message.component.css']
 })
 export class DeleteMessageComponent {
-  brojReda : number | undefined;
+  brojReda : string | undefined;
+  predstava : Predstava = new Predstava(-1, "", "", "", -1);
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {brojReda: number}) {
-    this.brojReda = data.brojReda;
+  constructor(public dialogRef: MatDialogRef<DeleteMessageComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: {predstava: Predstava}) {
+    this.brojReda = data.predstava.naziv;
+    this.predstava = data.predstava;
+  }
+
+  onDelete($event: MouseEvent) {
+    localStorage.removeItem(this.predstava.id+"");
+    this.dialogRef.close("success");
   }
 }

@@ -13,15 +13,19 @@ import {DeleteMessageComponent} from "../delete-message/delete-message.component
 export class TableComponent {
 
   predstave = [
-    new Predstava("/assets/Umbrella-Friends-SVG-TV-Shows-scaled.jpeg", "predstava 1", "Ovo je testna predstava broj jedan snimljena 4. marta 2023.", 47),
-    new Predstava("/assets/eye-password-see-view.svg", "predstava 2", "Ovo je testna predstava broj dva snimljena 4. marta 2023.", 50),
-    new Predstava("/assets/man-shows-a-graph.svg", "predstava 3", "Ovo je testna predstava broj tri snimljena 4. marta 2023.", 50),
-    new Predstava("/assets/POPEYE-7-LOGO-SVG-PNG-DXF.jpg", "predstava 4", "Ovo je testna predstava broj cetiri snimljena 4. marta 2023.", 50),
-    new Predstava("/assets/Now-Showing-Sign.jpeg", "predstava 5", "Ovo je testna predstava broj pet snimljena 4. marta 2023.", 50),
-    new Predstava("/assets/WTM-Friends-01-16.jpg", "predstava 6", "Ovo je testna predstava broj sest snimljena 4. marta 2023.", 42)
+    new Predstava(1, "/assets/Umbrella-Friends-SVG-TV-Shows-scaled.jpeg", "predstava 1", "Ovo je testna predstava broj jedan snimljena 4. marta 2023.", 47),
+    new Predstava(2, "/assets/eye-password-see-view.svg", "predstava 2", "Ovo je testna predstava broj dva snimljena 4. marta 2023.", 50),
+    new Predstava(3, "/assets/man-shows-a-graph.svg", "predstava 3", "Ovo je testna predstava broj tri snimljena 4. marta 2023.", 50),
+    new Predstava(4, "/assets/POPEYE-7-LOGO-SVG-PNG-DXF.jpg", "predstava 4", "Ovo je testna predstava broj cetiri snimljena 4. marta 2023.", 50),
+    new Predstava(5, "/assets/Now-Showing-Sign.jpeg", "predstava 5", "Ovo je testna predstava broj pet snimljena 4. marta 2023.", 50),
+    new Predstava(6, "/assets/WTM-Friends-01-16.jpg", "predstava 6", "Ovo je testna predstava broj sest snimljena 4. marta 2023.", 42)
     ]
 
   constructor(public dialog: MatDialog) {
+    for(let i = 0; i < this.predstave.length; i++){
+      localStorage.setItem(this.predstave[i].id + "", JSON.stringify(this.predstave[i]));
+    }
+
   }
 
   onClick(event : any){
@@ -57,12 +61,12 @@ export class TableComponent {
   onClickDelete(event: number){
     let number : number = event;
     console.log(number)
-
     // this.detailViewComponent.openDialog()
-    const dialogRef = this.dialog.open(DeleteMessageComponent, {data: { brojReda : number}});
-
+    const dialogRef = this.dialog.open(DeleteMessageComponent, {data: { predstava : this.predstave[number-1]}});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if(result === "success"){
+        this.predstave.splice(number-1,1);
+      }
     });
   }
 }

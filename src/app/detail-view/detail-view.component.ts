@@ -8,7 +8,7 @@ import {Predstava} from "../../domain/Predstava";
   styleUrls: ['./detail-view.component.css']
 })
 export class DetailViewComponent {
-  predstava : Predstava = new Predstava("", "", "", -1);
+  predstava : Predstava = new Predstava(-1, "", "", "", -1);
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {predstava: Predstava}) {
     this.predstava = data.predstava;
