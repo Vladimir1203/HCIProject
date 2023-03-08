@@ -9,15 +9,20 @@ import {Predstava} from "../../domain/Predstava";
 })
 export class DetailViewComponent {
   predstava : Predstava = new Predstava(-1, "", "", "", -1);
-
+  p : Predstava | undefined;
+  obj : Object | undefined;
   constructor(@Inject(MAT_DIALOG_DATA) public data: {predstava: Predstava}) {
     this.predstava = data.predstava;
   }
 
   onClick(predstava: Predstava) {
-    predstava.brojPreostalihMesta--;
-    if(predstava.brojPreostalihMesta == 0){
-
+    var item = localStorage.getItem(predstava.id + "");
+    if (item != null) {
+       this.obj = JSON.parse(item);
+       // @ts-ignore
+      this.obj.brojPreostalihMesta--;
+       localStorage.setItem(predstava.id+"", JSON.stringify(this.obj));
+       predstava.brojPreostalihMesta--;
     }
   }
 }
