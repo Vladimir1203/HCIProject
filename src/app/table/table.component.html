@@ -24,6 +24,9 @@
       <td>
         <button class = "btn btn-sm btn-oval btn-info custom-color" (click)="onClick($event)">Detalji predstave {{i + 1}}</button>
       </td>
+      <td>
+        <button class = "btn btn-sm btn-oval btn-danger custom-color" (click)="onClickDelete(i+1)">X</button>
+      </td>
     </tr>
   </tbody>
 </table>

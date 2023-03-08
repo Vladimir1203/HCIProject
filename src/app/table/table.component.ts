@@ -3,6 +3,7 @@ import {Predstava} from "../../domain/Predstava";
 import {DetailViewComponent} from "../detail-view/detail-view.component";
 import {MatDialog} from "@angular/material/dialog";
 import {NewShowComponent} from "../new-show/new-show.component";
+import {DeleteMessageComponent} from "../delete-message/delete-message.component";
 
 @Component({
   selector: 'app-table',
@@ -47,6 +48,18 @@ export class TableComponent {
 
   onAddNewShow($event: MouseEvent) {
     const dialogRef = this.dialog.open(NewShowComponent, {data: { predstava : this.predstave[0]}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  onClickDelete(event: number){
+    let number : number = event;
+    console.log(number)
+
+    // this.detailViewComponent.openDialog()
+    const dialogRef = this.dialog.open(DeleteMessageComponent, {data: { brojReda : number}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

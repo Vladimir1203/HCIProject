@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule} from "@angular/material/dialog";
 import {NewShowComponent} from "./new-show/new-show.component";
 import {LoginComponent} from "./login/login.component";
+import {DeleteMessageComponent} from "./delete-message/delete-message.component";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {LoginComponent} from "./login/login.component";
     FooterComponent,
     DetailViewComponent,
     NewShowComponent,
-    LoginComponent
+    LoginComponent,
+    DeleteMessageComponent
   ],
   imports: [
     BrowserModule,
