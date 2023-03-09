@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { AppRoutingModule } from "./app.routing.module";
@@ -31,7 +31,8 @@ import {DeleteMessageComponent} from "./delete-message/delete-message.component"
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

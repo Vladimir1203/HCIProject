@@ -18,17 +18,7 @@ export class TableComponent {
   myArray: any[] | undefined;
 
   constructor(public dialog: MatDialog, private route: ActivatedRoute) {
-    var values = [],
-      keys = Object.keys(localStorage),
-      i = keys.length;
-
-    while ( i-- ) {
-      values.push( localStorage.getItem(keys[i]) );
-    }
-    for(let i = 0; i < values.length; i++){
-      // @ts-ignore
-      this.predstave[i] = JSON.parse(values[i]);
-    }
+    this.osveziTabelu();
   }
 
   onClick(event : any){
@@ -57,7 +47,9 @@ export class TableComponent {
     const dialogRef = this.dialog.open(NewShowComponent, {data: { predstava : this.predstave[0]}});
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if(result === "success"){
+        this.osveziTabelu();
+      }
     });
   }
 
@@ -71,5 +63,19 @@ export class TableComponent {
         this.predstave.splice(number-1,1);
       }
     });
+  }
+
+  private osveziTabelu() {
+    var values = [],
+      keys = Object.keys(localStorage),
+      i = keys.length;
+
+    while ( i-- ) {
+      values.push( localStorage.getItem(keys[i]) );
+    }
+    for(let i = 0; i < values.length; i++){
+      // @ts-ignore
+      this.predstave[i] = JSON.parse(values[i]);
+    }
   }
 }
