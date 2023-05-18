@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {NewShowComponent} from "../new-show/new-show.component";
 import {DeleteMessageComponent} from "../delete-message/delete-message.component";
 import { ActivatedRoute } from '@angular/router';
+import {LocalStorageService} from "../local-storage.service";
 
 
 @Component({
@@ -16,8 +17,11 @@ export class TableComponent {
 
   predstave : Predstava[] = [];
   myArray: any[] | undefined;
+  isButtonVisible: boolean = true;
 
-  constructor(public dialog: MatDialog, private route: ActivatedRoute) {
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private localStorageService: LocalStorageService) {
+   // this.isButtonVisible = localStorageService.isButtonVisible;
+    this.isButtonVisible = localStorageService.isButtonVisibleFunction();
     this.osveziTabelu();
   }
 
@@ -25,7 +29,7 @@ export class TableComponent {
     console.log(event.target.textContent)
     let string = event.target.textContent;
     let number : number = string.split(" ")[2]
-    console.log(number)
+    // console.log(number)
 
     // this.detailViewComponent.openDialog()
     const dialogRef = this.dialog.open(DetailViewComponent, {data: { predstava : this.predstave[number-1]}});
@@ -36,11 +40,19 @@ export class TableComponent {
   }
 
   sortByNameAsc() {
-    this.predstave.sort((a, b) => a.naziv.localeCompare(b.naziv));
+    this.predstave.sort((a, b) => {
+      const nazivA = a.naziv || ''; // Use empty string if nazivA is null or undefined
+      const nazivB = b.naziv || ''; // Use empty string if nazivB is null or undefined
+      return nazivA.localeCompare(nazivB);
+    });
   }
 
   sortByNameDesc() {
-    this.predstave.sort((a, b) => b.naziv.localeCompare(a.naziv));
+    this.predstave.sort((a, b) => {
+      const nazivA = a.naziv || ''; // Use empty string if nazivA is null or undefined
+      const nazivB = b.naziv || ''; // Use empty string if nazivB is null or undefined
+      return nazivB.localeCompare(nazivA);
+    });
   }
 
   onAddNewShow($event: MouseEvent) {
@@ -67,9 +79,15 @@ export class TableComponent {
 
   private osveziTabelu() {
     var values = [],
-      keys = Object.keys(localStorage),
-      i = keys.length;
+      keys = Object.keys(localStorage);
 
+    for (let i = keys.length - 1; i >= 0; i--) {
+      let num = parseInt(keys[i]);
+      if (isNaN(num)) {
+        keys.splice(i, 1); // Remove the element at index i
+      }
+    }
+    let i = keys.length;
     while ( i-- ) {
       values.push( localStorage.getItem(keys[i]) );
     }

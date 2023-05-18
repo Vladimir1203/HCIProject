@@ -1,3 +1,3 @@
-enum TipKorisnika{
+export enum TipKorisnika{
   kupac, zaposleni
 }

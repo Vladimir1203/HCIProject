@@ -1,0 +1,96 @@
+<link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet"
+      xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<div class="form-group text-center">
+  <div class="col-sm-10 reg-icon">
+    <span class="fa fa-user fa-3x move-right">Your profile</span>
+  </div>
+</div>
+<div class="profile-container">
+  <div class="jumbotron text-center" style="min-height:400px;height:auto;">
+    <br><br>
+    <form class="form-horizontal" role="form">
+      <div class="form-group text-center">
+        <div class="profile-info" *ngIf="!isEditMode">
+          <div class="form-group text-center">
+            <div class="col-sm-10 reg-icon">
+              <p class = "fa"><strong>Username:</strong> {{ korisnik.korisnickoIme }}</p>
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <div class="col-sm-10 reg-icon">
+              <p class = "fa"><strong>First Name:</strong> {{ korisnik.ime }}</p>
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <div class="col-sm-10 reg-icon">
+                <p class = "fa"><strong>Last Name:</strong> {{ korisnik.prezime }}</p>
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <div class="col-sm-10 reg-icon">
+              <p class = "fa"><strong>Contact Phone:</strong> {{ korisnik.kontaktTelefon }}</p>
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <div class="col-sm-10 reg-icon">
+              <p class = "fa"><strong>Address:</strong> {{ korisnik.adresa }}</p>
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <div class="col-sm-10 reg-icon">
+              <p class = "fa"><strong>Username:</strong> {{ korisnik.korisnickoIme }}</p>
+            </div>
+          </div>
+<!--          <div class="form-group text-center">-->
+<!--            <div class="col-sm-10 reg-icon">-->
+<!--              <p class = "fa"><strong>Password:</strong> {{ korisnik.sifra }}</p>-->
+<!--            </div>-->
+<!--          </div>-->
+          <div class="form-group text-center">
+            <div class="col-sm-10 reg-icon">
+              <p class = "fa"><strong>User Type:</strong> {{ TipKorisnika[korisnik.tipKorisnika] }}</p>
+            </div>
+          </div>
+          <br>
+          <div class="form-group text-center">
+            <div class="col-sm-10 reg-icon">
+              <button class="btn btn-sm btn-info btn-lg btn-block custom-color" (click)="editMode()">Edit your profile</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <form class="edit-form" *ngIf="isEditMode" (submit)="saveChanges()">
+      <label for="ime">First Name:</label>
+      <input type="text" id="ime" [(ngModel)]="editedKorisnik.ime" [ngModelOptions]="{standalone: true}" required>
+
+      <label for="prezime">Last Name:</label>
+      <input type="text" id="prezime" [(ngModel)]="editedKorisnik.prezime" [ngModelOptions]="{standalone: true}" required>
+
+      <label for="kontaktTelefon">Contact Phone:</label>
+      <input type="text" id="kontaktTelefon" [(ngModel)]="editedKorisnik.kontaktTelefon" [ngModelOptions]="{standalone: true}" required>
+
+      <label for="adresa">Address:</label>
+      <input type="text" id="adresa" [(ngModel)]="editedKorisnik.adresa" [ngModelOptions]="{standalone: true}" required>
+
+      <label for="korisnickoIme">Username:</label>
+      <input type="text" id="korisnickoIme" [(ngModel)]="editedKorisnik.korisnickoIme" [ngModelOptions]="{standalone: true}" required>
+
+      <label for="sifra">Password:</label>
+      <input type="password" id="sifra" [(ngModel)]="editedKorisnik.sifra" [ngModelOptions]="{standalone: true}" required>
+
+      <label for="tipKorisnika">User Type:</label>
+      <select disabled id="tipKorisnika" [(ngModel)]="editedKorisnik.tipKorisnika" [ngModelOptions]="{standalone: true}" required>
+        <option [ngValue]="TipKorisnika.kupac">Buyer</option>
+        <option [ngValue]="TipKorisnika.zaposleni">Employee</option>
+      </select>
+
+      <div class="button-group">
+        <button type="submit" class="btn btn-sm btn-info btn-lg btn-block custom-color">Save</button>
+        <button type="button" class="btn btn-sm btn-info btn-lg btn-block custom-color space" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

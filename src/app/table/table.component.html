@@ -3,9 +3,9 @@
   <thead class="datatable-header">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Slika
+      <th scope="col">Picture
       </th>
-      <th scope="col">Opis</th>
+      <th scope="col">Description</th>
     </tr>
   </thead>
   <tbody>
@@ -22,17 +22,17 @@
 <!--      <td>{{predstava.naziv}}</td>-->
       <td>{{predstava.opis}}</td>
       <td>
-        <button class = "btn btn-sm btn-oval btn-info custom-color" (click)="onClick($event)">Detalji predstave {{i + 1}}</button>
+        <button class = "btn btn-sm btn-oval btn-info custom-color" (click)="onClick($event)">Show details {{i + 1}}</button>
       </td>
       <td>
-        <button class = "btn btn-sm btn-oval btn-danger custom-color" (click)="onClickDelete(i+1)">X</button>
+        <button *ngIf="isButtonVisible" class = "btn btn-sm btn-oval btn-danger custom-color" (click)="onClickDelete(i+1)">X</button>
       </td>
     </tr>
   </tbody>
 </table>
   <div>
-    <button class = "btn btn-oval btn-info custom-color" type="submit" (click)="onAddNewShow($event)">Dodaj novu</button>
-    <button class = "btn btn-oval btn-info custom-color custom-position" (click)="sortByNameAsc()">Sort(A-Z)</button>
+    <button *ngIf="isButtonVisible" class = "btn btn-oval btn-info custom-color" type="submit" (click)="onAddNewShow($event)" >Add new</button>
+    <button class = "btn btn-oval btn-info custom-color custom-position space" (click)="sortByNameAsc()">Sort(A-Z)</button>
     <button class = "btn btn-oval btn-info custom-color custom-position" (click)="sortByNameDesc()">Sort(Z-A)</button>
   </div>
 </div>

@@ -1,19 +1,19 @@
 <h2 mat-dialog-title>Detalji predstave: {{predstava.naziv}}</h2>
 <mat-dialog-content class="mat-typography">
   <p>
-    {{predstava.naziv}} -> naziv predstave
+    {{predstava.naziv}} -> Name of the show
   </p>
   <p>
-    {{predstava.opis}} -> opis predstave
+    {{predstava.opis}} -> Description
   </p>
   <p>
-    {{predstava.brojPreostalihMesta}} -> br preostalih mesta
+    {{predstava.brojPreostalihMesta}} -> number of remaining seats
   </p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
 
-  <button class = "btn btn-oval btn-info custom-color" (click)="onClick(predstava)" [disabled]="predstava.brojPreostalihMesta === 0">Rezervisi kartu</button>
-  <button class = "btn btn-oval btn-info custom-color" mat-button mat-dialog-close>Cancel</button>
+  <button class = "btn btn-oval btn-info custom-color" (click)="onClick(predstava)" [disabled]="predstava.brojPreostalihMesta === 0">Reserve ticket</button>
+  <button class = "btn btn-oval btn-info custom-color space" mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>
 
 

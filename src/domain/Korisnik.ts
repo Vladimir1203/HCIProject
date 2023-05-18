@@ -1,3 +1,5 @@
+import {TipKorisnika} from "./TipKorisnika";
+
 export class Korisnik{
   ime: string;
   prezime: string;

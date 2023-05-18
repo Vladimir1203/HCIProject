@@ -13,6 +13,9 @@ import { MatDialogModule} from "@angular/material/dialog";
 import {NewShowComponent} from "./new-show/new-show.component";
 import {LoginComponent} from "./login/login.component";
 import {DeleteMessageComponent} from "./delete-message/delete-message.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {LocalStorageService} from "./local-storage.service";
+import {LogoutComponent} from "./logout/logout.component";
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import {DeleteMessageComponent} from "./delete-message/delete-message.component"
     DetailViewComponent,
     NewShowComponent,
     LoginComponent,
-    DeleteMessageComponent
+    DeleteMessageComponent,
+    ProfileComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,7 @@ import {DeleteMessageComponent} from "./delete-message/delete-message.component"
     MatDialogModule,
     RouterModule
   ],
-  providers: [],
+  providers: [LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

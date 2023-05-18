@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LocalStorageService} from "./local-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'HCIPozoristance';
+  constructor(private localStorageService: LocalStorageService) {}
+
+  ngOnInit(): void {
+    this.localStorageService.initializeData();
+  }
 }

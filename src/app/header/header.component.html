@@ -1,21 +1,16 @@
 <header>
   <nav class = "navbar navbar-expand-md navbar-dark bg-dark" >
-    <div><a href = "localhost:4200" class = "navbar-brand">HCIPozoristance</a></div>
+    <div><a href = "localhost:4200" class = "navbar-brand space">HCIPozoristance</a></div>
 
     <ul class = "navbar-nav">
 
         <li routerLinkActive="active"><a routerLink = "/home" class = "nav-link">Home</a></li>
-        <li routerLinkActive="active"><a routerLink = "/templates" class = "nav-link">Templates</a></li>
-        <li routerLinkActive="active"><a routerLink = "/createTemplate" class = "nav-link">Create template</a></li>
-        <li routerLinkActive="active"><a routerLink = "/paypal" class = "nav-link">Paypal</a></li>
 
     </ul>
 
     <ul class = "navbar-nav navbar-collapse justify-content-end">
-
+        <li><a routerLink = "/profile" class = "nav-link">My Profile</a></li>
         <li><a routerLink = "/login" class = "nav-link">Login</a></li>
-
-
         <li><a (click) = "onLogout()" routerLink = "/logout" class = "nav-link" >Logout</a></li>
 
     </ul>
